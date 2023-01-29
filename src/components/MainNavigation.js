@@ -21,14 +21,28 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import SimpleCard from '../components/SignIn';
 
 import { ImStatsBars2 } from 'react-icons/im';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineShop } from 'react-icons/ai';
 import { BsPeople } from 'react-icons/bs';
 
+import { useNavigate } from 'react-router-dom';
+import { Link as ReactRouter } from 'react-router-dom';
+import logo from '../images/logo.png';
+
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate = useNavigate();
+
+  const signInHandler = () => {
+    navigate('/signin');
+  };
+
+  const signupHandler = () => {
+    navigate('/signup');
+  };
 
   return (
     <Box>
@@ -63,7 +77,11 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            Logo
+            <Link as={ReactRouter} to="/">
+              <Box w={8} h={8}>
+                <img src={logo} alt="Logo" />
+              </Box>
+            </Link>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -83,6 +101,7 @@ export default function WithSubnavigation() {
             fontWeight={400}
             variant={'link'}
             href={'#'}
+            onClick={signInHandler}
           >
             Sign In
           </Button>
@@ -96,6 +115,7 @@ export default function WithSubnavigation() {
             _hover={{
               bg: 'blue.300',
             }}
+            onClick={signupHandler}
           >
             Sign Up
           </Button>
@@ -279,39 +299,39 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: 'Application',
         subLabel: 'Trending Design to inspire you',
-        href: '#',
+        href: '/application',
         icon: <ImStatsBars2 paddingLeft="3px" w={8} h={8} />,
       },
       {
         label: 'E-Commerce',
         subLabel: 'Up-and-coming Designers',
-        href: '#',
+        href: '/ecommerce',
         icon: <AiOutlineShoppingCart paddingLeft="3px" w={8} h={8} />,
       },
       {
         label: 'Marketing',
         subLabel: 'Up-and-coming Designers',
-        href: '#',
+        href: '/marketing',
         icon: <AiOutlineShop paddingLeft="3px" w={8} h={8} />,
       },
       {
-        label: 'Comunity',
+        label: 'Community',
         subLabel: 'Up-and-coming Designers',
-        href: '#',
+        href: '/community',
         icon: <BsPeople paddingLeft="3px" w={6} h={6} />,
       },
     ],
   },
   {
     label: 'Themes',
-    href: '#',
+    href: '/themes',
   },
   {
     label: 'Pricing',
-    href: '#',
+    href: '/pricing',
   },
   {
     label: 'Documentation',
-    href: '#',
+    href: '/documentation',
   },
 ];
