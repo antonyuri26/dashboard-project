@@ -11,9 +11,34 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useStatStyles,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FormErrorMessage } from '@chakra-ui/react';
+import { Field, Form, Formik } from 'formik';
 
 export default function SimpleCard() {
+  const navigate = useNavigate();
+
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalid email address';
+    }
+    return error;
+  }
+
+  function validatePassword(value) {
+    let error;
+    if (!value) {
+      error = 'Required';
+    }
+    return error;
+  }
+
   return (
     <Flex
       minH={'100vh'}
@@ -35,33 +60,68 @@ export default function SimpleCard() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
-              </Stack>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}
-              >
-                Sign in
-              </Button>
-            </Stack>
+            <Formik
+              initialValues={{ email: '', password: '' }}
+              onSubmit={(values, actions) => {
+                setTimeout(() => {
+                  alert(JSON.stringify(values, null, 2));
+                  actions.setSubmitting(false);
+                  navigate('/');
+                }, 1000);
+              }}
+            >
+              {props => (
+                <Form>
+                  <Field name="email" validate={validateEmail}>
+                    {({ field, form }) => (
+                      <FormControl
+                        id="email"
+                        isInvalid={form.errors.email && form.touched.email}
+                      >
+                        <FormLabel>Email address</FormLabel>
+                        <Input {...field} type="email" placeholder="Email" />
+                        <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Field name="password" validate={validatePassword}>
+                    {({ field, form }) => (
+                      <FormControl
+                        id="password"
+                        isInvalid={
+                          form.errors.password && form.touched.password
+                        }
+                      >
+                        <FormLabel>Password</FormLabel>
+                        <Input {...field} type="password" />
+                        <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Stack spacing={10}>
+                    <Stack
+                      direction={{ base: 'column', sm: 'row' }}
+                      align={'start'}
+                      justify={'space-between'}
+                    >
+                      <Checkbox>Remember me</Checkbox>
+                      <Link color={'blue.400'}>Forgot password?</Link>
+                    </Stack>
+                    <Button
+                      type="submit"
+                      isLoading={props.isSubmitting}
+                      bg={'blue.400'}
+                      color={'white'}
+                      _hover={{
+                        bg: 'blue.500',
+                      }}
+                    >
+                      Sign in
+                    </Button>
+                  </Stack>
+                </Form>
+              )}
+            </Formik>
           </Stack>
         </Box>
       </Stack>
