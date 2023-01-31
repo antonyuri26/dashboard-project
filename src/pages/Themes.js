@@ -3,11 +3,9 @@ import { Heading } from '@chakra-ui/react';
 
 const Themes = () => {
   return (
-    <>
-      <Heading textAlign="center" marginY="3rem">
-        Themes
-      </Heading>
-    </>
+    <Heading textAlign="center" marginY="3rem" id="themes">
+      Themes
+    </Heading>
   );
 };
 

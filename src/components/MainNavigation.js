@@ -9,6 +9,12 @@ import {
   Icon,
   Link,
   Popover,
+  Avatar,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
@@ -31,10 +37,17 @@ import { BsPeople } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { Link as ReactRouter } from 'react-router-dom';
 import logo from '../images/logo.png';
+import { authActions } from '../store';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const isAuth = useSelector(state => state.auth.isAuthenticated);
+  // console.log(isAuth);
 
   const signInHandler = () => {
     navigate('/signin');
@@ -43,6 +56,13 @@ export default function WithSubnavigation() {
   const signupHandler = () => {
     navigate('/signup');
   };
+
+  const signOutHandler = () => {
+    dispatch(authActions.logOut());
+    navigate('/signin');
+  };
+
+  // const signOutHandler = () => {};
 
   return (
     <Box>
@@ -89,37 +109,87 @@ export default function WithSubnavigation() {
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}
-        >
-          <Button
-            as={'a'}
-            fontSize={'md'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
-            onClick={signInHandler}
+        {!isAuth ? (
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify={'flex-end'}
+            direction={'row'}
+            spacing={6}
           >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'md'}
-            fontWeight={600}
-            color={'white'}
-            bg={'blue.400'}
-            href={'#'}
-            _hover={{
-              bg: 'blue.300',
-            }}
-            onClick={signupHandler}
+            <Button
+              as={'a'}
+              fontSize={'md'}
+              fontWeight={400}
+              variant={'link'}
+              href={'#'}
+              onClick={signInHandler}
+            >
+              Sign In
+            </Button>
+            <Button
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'md'}
+              fontWeight={600}
+              color={'white'}
+              bg={'blue.400'}
+              href={'#'}
+              _hover={{
+                bg: 'blue.300',
+              }}
+              onClick={signupHandler}
+            >
+              Sign Up
+            </Button>
+          </Stack>
+        ) : (
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify={'flex-end'}
+            direction={'row'}
+            spacing={6}
           >
-            Sign Up
-          </Button>
-        </Stack>
+            <Button
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'md'}
+              fontWeight={600}
+              color={'white'}
+              bg={'blue.400'}
+              href={'#'}
+              _hover={{
+                bg: 'blue.300',
+              }}
+              onClick={signOutHandler}
+            >
+              Log Out
+            </Button>
+            {/* AVATAR */}
+            <Flex alignItems={'center'}>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={'full'}
+                  variant={'link'}
+                  cursor={'pointer'}
+                  minW={0}
+                >
+                  <Avatar
+                    size={'sm'}
+                    src={
+                      'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    }
+                  />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Profile</MenuItem>
+                  <MenuItem>Account Settings</MenuItem>
+                  <MenuDivider />
+                  <MenuItem>Log Out</MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
+            {/* AVATAR */}
+          </Stack>
+        )}
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -129,57 +199,79 @@ export default function WithSubnavigation() {
   );
 }
 
+//Nav Links (Themes Pricing Documentation)
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const navigate1 = useNavigate();
+  const isAuth1 = useSelector(state => state.auth.isAuthenticated);
 
-  return (
-    <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map(navItem => (
-        <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'md'}
-                fontWeight="bold"
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-                {navItem.icon}
-              </Link>
-            </PopoverTrigger>
+  //scroll and changing pages
+  const scrollOnClick = id => {
+    if (id === 'themes') {
+      navigate1('/themes');
+    } else if (id === 'documentation') {
+      navigate1('/documentation');
+    } else {
+      const element = document.getElementById(id);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}
-              >
-                <Stack>
-                  {navItem.children.map(child => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-    </Stack>
-  );
+  if (!isAuth1) {
+    return (
+      <Stack direction={'row'} spacing={4}>
+        {NAV_ITEMS.map(navItem => (
+          <Box key={navItem.label}>
+            <Popover trigger={'hover'} placement={'bottom-start'}>
+              <PopoverTrigger>
+                <Link
+                  p={2}
+                  id={navItem.id}
+                  fontSize={'md'}
+                  fontWeight="bold"
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}
+                  onClick={() => {
+                    scrollOnClick(navItem.id);
+                  }}
+                >
+                  {navItem.label}
+                  {navItem.icon}
+                </Link>
+              </PopoverTrigger>
+
+              {navItem.children && (
+                <PopoverContent
+                  border={0}
+                  boxShadow={'xl'}
+                  bg={popoverContentBgColor}
+                  p={4}
+                  rounded={'xl'}
+                  minW={'sm'}
+                >
+                  <Stack>
+                    {navItem.children.map(child => (
+                      <DesktopSubNav key={child.label} {...child} /> //dropdown
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Box>
+        ))}
+      </Stack>
+    );
+  }
 };
 
-const DesktopSubNav = ({ label, href, subLabel, icon }: NavItem) => {
+//Nav Links dropdown Menu (Components)
+// const DesktopSubNav = ({ label, href, subLabel, icon }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel, icon }) => {
   return (
     <Link
       href={href}
@@ -231,7 +323,8 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+// const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -284,14 +377,15 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
+// interface NavItem {
+//   label: string;
+//   subLabel?: string;
+//   children?: Array<NavItem>;
+//   href?: string;
+// }
 
-const NAV_ITEMS: Array<NavItem> = [
+// const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS = [
   {
     label: 'Components',
     icon: <ChevronDownIcon paddingLeft="3px" w={5} h={5} />,
@@ -322,16 +416,25 @@ const NAV_ITEMS: Array<NavItem> = [
       },
     ],
   },
+
   {
-    label: 'Themes',
-    href: '/themes',
+    label: 'Features',
+    href: 'features',
+    id: 'features',
   },
   {
     label: 'Pricing',
-    href: '/pricing',
+    // href: '/pricing',
+    id: 'pricing',
+  },
+  {
+    label: 'Themes',
+    href: '/themes',
+    id: 'themes',
   },
   {
     label: 'Documentation',
     href: '/documentation',
+    id: 'documentation',
   },
 ];

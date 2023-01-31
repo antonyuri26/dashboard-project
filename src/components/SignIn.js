@@ -13,13 +13,18 @@ import {
   useColorModeValue,
   useStatStyles,
 } from '@chakra-ui/react';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormErrorMessage } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
+import { authActions } from '../store';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default function SimpleCard() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const isAuth = useSelector(state => state.auth.isAuthenticated);
 
   function validateEmail(value) {
     let error;
@@ -66,6 +71,8 @@ export default function SimpleCard() {
                 setTimeout(() => {
                   alert(JSON.stringify(values, null, 2));
                   actions.setSubmitting(false);
+                  dispatch(authActions.logIn());
+
                   navigate('/');
                 }, 1000);
               }}
