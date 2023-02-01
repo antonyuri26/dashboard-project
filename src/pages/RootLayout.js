@@ -2,7 +2,7 @@ import WithSubnavigation from '../components/MainNavigation';
 import { Outlet } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
 
-const RootLayout = () => {
+const RootLayout = props => {
   return (
     <Box
       maxW="70%"
@@ -11,7 +11,7 @@ const RootLayout = () => {
       justifyContent="center"
       margin="auto"
     >
-      <WithSubnavigation />
+      <WithSubnavigation navPageChangeHandler={props.navPageChangeHandler} />
       <main>
         <Outlet />
       </main>

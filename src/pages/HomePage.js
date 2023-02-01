@@ -8,20 +8,30 @@ import BasicStatistics from '../components/Statistics';
 import LargeWithLogoLeft from '../components/Footer';
 import WithBackgroundImage from '../components/Hero1';
 import CallToActionWithIllustration from '../components/Hero2';
+import { useSelector } from 'react-redux';
+import Dashboard from './Dashboard';
 
 const HomePage = () => {
+  const isAuth1 = useSelector(state => state.auth.isAuthenticated);
+
   return (
     <>
       {/* <SplitScreen /> */}
       {/* <WithBackgroundImage /> */}
-      <CallToActionWithIllustration />
-      <HeadingText />
-      <SimpleThreeColumns />
-      <SimpleThreeColumns />
-      <WithSpeechBubbles />
-      <ThreeTierPricing />
-      <BasicStatistics />
-      <LargeWithLogoLeft />
+      {isAuth1 ? (
+        <Dashboard />
+      ) : (
+        <div>
+          <CallToActionWithIllustration />
+          <HeadingText />
+          <SimpleThreeColumns />
+          <SimpleThreeColumns />
+          <ThreeTierPricing />
+          <WithSpeechBubbles />
+          <BasicStatistics />
+          <LargeWithLogoLeft />
+        </div>
+      )}
     </>
   );
 };

@@ -40,8 +40,9 @@ import logo from '../images/logo.png';
 import { authActions } from '../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-export default function WithSubnavigation() {
+export default function WithSubnavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -105,7 +106,7 @@ export default function WithSubnavigation() {
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
+            <DesktopNav navPageChangeHandler={props.navPageChangeHandler} />
           </Flex>
         </Flex>
 
@@ -200,22 +201,36 @@ export default function WithSubnavigation() {
 }
 
 //Nav Links (Themes Pricing Documentation)
-const DesktopNav = () => {
+const DesktopNav = props => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
   const navigate1 = useNavigate();
   const isAuth1 = useSelector(state => state.auth.isAuthenticated);
+  const [location, setLocation] = useState('');
 
   //scroll and changing pages
   const scrollOnClick = id => {
     if (id === 'themes') {
+      setLocation('awayFromHome');
       navigate1('/themes');
-    } else if (id === 'documentation') {
-      navigate1('/documentation');
     } else {
-      const element = document.getElementById(id);
-      element.scrollIntoView({ behavior: 'smooth' });
+      if (location === 'awayFromHome') {
+        if (id === 'pricing') {
+          navigate1('/');
+          window.scrollTo({ top: 1500, left: 0, behavior: 'smooth' });
+          setLocation('');
+        }
+        if (id === 'features') {
+          navigate1('/');
+          setLocation('');
+          window.scrollTo({ top: 1000, left: 0, behavior: 'smooth' });
+          // window.scrollTo(0, 1000);
+        }
+      } else {
+        const element = document.getElementById(id);
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -432,9 +447,9 @@ const NAV_ITEMS = [
     href: '/themes',
     id: 'themes',
   },
-  {
-    label: 'Documentation',
-    href: '/documentation',
-    id: 'documentation',
-  },
+  // {
+  //   label: 'Documentation',
+  //   href: '/documentation',
+  //   id: 'documentation',
+  // },
 ];
