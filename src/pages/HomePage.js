@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SplitScreen from '../components/Hero';
 import SimpleThreeColumns from '../components/Features';
 import HeadingText from '../components/Heading';
@@ -10,9 +10,41 @@ import WithBackgroundImage from '../components/Hero1';
 import CallToActionWithIllustration from '../components/Hero2';
 import { useSelector } from 'react-redux';
 import Dashboard from './Dashboard';
+import { navActions } from '../store';
+import { useDispatch } from 'react-redux';
 
 const HomePage = () => {
   const isAuth1 = useSelector(state => state.auth.isAuthenticated);
+  const nav = useSelector(state => state.nav.navChange);
+  const navId = useSelector(state => state.nav.id);
+  // const nav = useSelector(state => state.nav.navChange);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   if (hand === true && navid === 'pricing') {
+  //     window.scrollTo({ top: 1700, left: 0, behavior: 'smooth' });
+  //     dispatchNav(navActions.navChange());
+  //     console.log('pricing');
+  //   }
+  //   if (hand === true && navid === 'features') {
+  //     window.scrollTo({ top: 500, left: 0, behavior: 'smooth' });
+  //     //   console.log('features');
+  //   }
+  // }, [nav]);
+
+  useEffect(() => {
+    console.log(nav);
+    console.log(navId);
+    if (nav === true && navId === 'pricing') {
+      window.scrollTo({ top: 1700, left: 0, behavior: 'smooth' });
+      dispatch(navActions.navChange('reset'));
+    }
+    if (nav === true && navId === 'features') {
+      window.scrollTo({ top: 1000, left: 0, behavior: 'smooth' });
+      dispatch(navActions.navChange('reset'));
+      console.log('features');
+    }
+  }, [nav]);
 
   return (
     <>

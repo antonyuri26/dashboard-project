@@ -38,6 +38,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link as ReactRouter } from 'react-router-dom';
 import logo from '../images/logo.png';
 import { authActions } from '../store';
+import { navActions } from '../store';
+import { handActions } from '../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -46,15 +48,18 @@ export default function WithSubnavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const dispatchNav1 = useDispatch();
 
   const isAuth = useSelector(state => state.auth.isAuthenticated);
   // console.log(isAuth);
 
-  const signInHandler = () => {
+  const signInHandler = id => {
+    dispatchNav1(navActions.navChange(id));
     navigate('/signin');
   };
 
-  const signupHandler = () => {
+  const signupHandler = id => {
+    dispatchNav1(navActions.navChange(id));
     navigate('/signup');
   };
 
@@ -122,8 +127,9 @@ export default function WithSubnavigation(props) {
               fontSize={'md'}
               fontWeight={400}
               variant={'link'}
-              href={'#'}
-              onClick={signInHandler}
+              // href={'/signin'}
+              // id={'sidnin'}
+              onClick={() => signInHandler('signin')}
             >
               Sign In
             </Button>
@@ -137,7 +143,7 @@ export default function WithSubnavigation(props) {
               _hover={{
                 bg: 'blue.300',
               }}
-              onClick={signupHandler}
+              onClick={() => signupHandler('signup')}
             >
               Sign Up
             </Button>
@@ -208,29 +214,65 @@ const DesktopNav = props => {
   const navigate1 = useNavigate();
   const isAuth1 = useSelector(state => state.auth.isAuthenticated);
   const [location, setLocation] = useState('');
+  const dispatch = useDispatch();
+  // const dispatchHand = useDispatch();
 
   //scroll and changing pages
+  // const scrollOnClick = id => {
+  //   console.log(id);
+  //   if (id === 'themes') {
+  //     setLocation('awayFromHome');
+  //     navigate1('/themes');
+  //   } else if (id === 'features' || id === 'pricing') {
+  //     dispatchNav(navActions.navChange(id));
+  //     const element = document.getElementById(id);
+  //     element.scrollIntoView({ behavior: 'smooth' });
+  //   } else {
+  //     if (location === 'awayFromHome') {
+  //       if (id === 'pricing') {
+  //         dispatchNav(navActions.navChange(id));
+  //         navigate1('/');
+  //         // window.scrollTo({ top: 1500, left: 0, behavior: 'smooth' });
+  //         setLocation('');
+  //       }
+  //       if (id === 'features') {
+  //         navigate1('/');
+  //         setLocation('');
+  //         window.scrollTo({ top: 1000, left: 0, behavior: 'smooth' });
+  //         // window.scrollTo(0, 1000);
+  //       }
+  //     }
+  //   }
+  // };
   const scrollOnClick = id => {
     if (id === 'themes') {
-      setLocation('awayFromHome');
+      dispatch(navActions.navChange(id));
       navigate1('/themes');
-    } else {
-      if (location === 'awayFromHome') {
-        if (id === 'pricing') {
-          navigate1('/');
-          window.scrollTo({ top: 1500, left: 0, behavior: 'smooth' });
-          setLocation('');
-        }
-        if (id === 'features') {
-          navigate1('/');
-          setLocation('');
-          window.scrollTo({ top: 1000, left: 0, behavior: 'smooth' });
-          // window.scrollTo(0, 1000);
-        }
-      } else {
-        const element = document.getElementById(id);
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      console.log('themes');
+    }
+
+    if (id === 'signin') {
+      dispatch(navActions.navChange(id));
+      navigate1('/signin');
+      console.log('signin');
+    }
+
+    if (id === 'signup') {
+      dispatch(navActions.navChange(id));
+      navigate1('/signup');
+      console.log('signup');
+    }
+
+    if (id === 'features') {
+      navigate1('/');
+      dispatch(navActions.navChange(id));
+      console.log('features');
+    }
+
+    if (id === 'pricing') {
+      navigate1('/');
+      dispatch(navActions.navChange(id));
+      console.log('pricing');
     }
   };
 
@@ -434,7 +476,7 @@ const NAV_ITEMS = [
 
   {
     label: 'Features',
-    href: 'features',
+    // href: 'features',
     id: 'features',
   },
   {
