@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ChakraProvider, Box, Grid, theme } from '@chakra-ui/react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 import RootLayout from './pages/RootLayout';
 import HomePage from './pages/HomePage';

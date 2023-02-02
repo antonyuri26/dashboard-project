@@ -27,7 +27,6 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import SimpleCard from '../components/SignIn';
 
 import { ImStatsBars2 } from 'react-icons/im';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -39,19 +38,16 @@ import { Link as ReactRouter } from 'react-router-dom';
 import logo from '../images/logo.png';
 import { authActions } from '../store';
 import { navActions } from '../store';
-import { handActions } from '../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 
 export default function WithSubnavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatchAuth = useDispatch();
   const dispatchNav1 = useDispatch();
 
   const isAuth = useSelector(state => state.auth.isAuthenticated);
-  // console.log(isAuth);
 
   const signInHandler = id => {
     dispatchNav1(navActions.navChange(id));
@@ -64,11 +60,9 @@ export default function WithSubnavigation(props) {
   };
 
   const signOutHandler = () => {
-    dispatch(authActions.logOut());
+    dispatchAuth(authActions.logOut());
     navigate('/signin');
   };
-
-  // const signOutHandler = () => {};
 
   return (
     <Box>
@@ -207,72 +201,38 @@ export default function WithSubnavigation(props) {
 }
 
 //Nav Links (Themes Pricing Documentation)
-const DesktopNav = props => {
+const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
-  const navigate1 = useNavigate();
+  const navigateNav = useNavigate();
   const isAuth1 = useSelector(state => state.auth.isAuthenticated);
-  const [location, setLocation] = useState('');
   const dispatch = useDispatch();
-  // const dispatchHand = useDispatch();
 
-  //scroll and changing pages
-  // const scrollOnClick = id => {
-  //   console.log(id);
-  //   if (id === 'themes') {
-  //     setLocation('awayFromHome');
-  //     navigate1('/themes');
-  //   } else if (id === 'features' || id === 'pricing') {
-  //     dispatchNav(navActions.navChange(id));
-  //     const element = document.getElementById(id);
-  //     element.scrollIntoView({ behavior: 'smooth' });
-  //   } else {
-  //     if (location === 'awayFromHome') {
-  //       if (id === 'pricing') {
-  //         dispatchNav(navActions.navChange(id));
-  //         navigate1('/');
-  //         // window.scrollTo({ top: 1500, left: 0, behavior: 'smooth' });
-  //         setLocation('');
-  //       }
-  //       if (id === 'features') {
-  //         navigate1('/');
-  //         setLocation('');
-  //         window.scrollTo({ top: 1000, left: 0, behavior: 'smooth' });
-  //         // window.scrollTo(0, 1000);
-  //       }
-  //     }
-  //   }
-  // };
   const scrollOnClick = id => {
     if (id === 'themes') {
       dispatch(navActions.navChange(id));
-      navigate1('/themes');
-      console.log('themes');
+      navigateNav('/themes');
     }
 
     if (id === 'signin') {
       dispatch(navActions.navChange(id));
-      navigate1('/signin');
-      console.log('signin');
+      navigateNav('/signin');
     }
 
     if (id === 'signup') {
       dispatch(navActions.navChange(id));
-      navigate1('/signup');
-      console.log('signup');
+      navigateNav('/signup');
     }
 
     if (id === 'features') {
-      navigate1('/');
+      navigateNav('/');
       dispatch(navActions.navChange(id));
-      console.log('features');
     }
 
     if (id === 'pricing') {
-      navigate1('/');
+      navigateNav('/');
       dispatch(navActions.navChange(id));
-      console.log('pricing');
     }
   };
 
@@ -327,7 +287,6 @@ const DesktopNav = props => {
 };
 
 //Nav Links dropdown Menu (Components)
-// const DesktopSubNav = ({ label, href, subLabel, icon }: NavItem) => {
 const DesktopSubNav = ({ label, href, subLabel, icon }) => {
   return (
     <Link
@@ -380,7 +339,6 @@ const MobileNav = () => {
   );
 };
 
-// const MobileNavItem = ({ label, children, href }: NavItem) => {
 const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -434,14 +392,6 @@ const MobileNavItem = ({ label, children, href }) => {
   );
 };
 
-// interface NavItem {
-//   label: string;
-//   subLabel?: string;
-//   children?: Array<NavItem>;
-//   href?: string;
-// }
-
-// const NAV_ITEMS: Array<NavItem> = [
 const NAV_ITEMS = [
   {
     label: 'Components',
