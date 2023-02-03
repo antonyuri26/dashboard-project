@@ -11,7 +11,7 @@ import {
 
 export default function CallToActionWithIllustration() {
   return (
-    <Container maxW={'5xl'}>
+    <Container maxW={'5xl'} mt={'45px'} mb={'65px'}>
       <Stack
         textAlign={'center'}
         align={'center'}

@@ -27,7 +27,6 @@ const navSlice = createSlice({
         state.navChange = false;
       } else {
         state.navChange = true;
-        console.log(`true, ${action.payload}`);
         state.id = action.payload;
       }
     },

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 // import MainContent from './MainContent';
 
 import {
@@ -13,38 +13,29 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
 } from '@chakra-ui/react';
 import {
   FiHome,
   FiTrendingUp,
   FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
 } from 'react-icons/fi';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
+import { Link as ReactRouter } from 'react-router-dom';
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: 'Dashboard', icon: FiHome },
-  { name: 'Tables', icon: FiTrendingUp },
-  { name: 'Billing', icon: FiCompass },
-  { name: 'Settings', icon: FiSettings },
+const LinkItems = [
+  { name: 'Dashboard', icon: FiHome, url: '/' },
+  { name: 'Tables', icon: FiTrendingUp, url: '/' },
+  { name: 'Billing', icon: FiCompass, url: '/' },
+  { name: 'Settings', icon: FiSettings, url: '/' },
 ];
 
-const LinkItemsbottom: Array<LinkItemProps> = [
-  { name: 'Profile', icon: FiHome },
-  { name: 'Sign In', icon: FiTrendingUp },
-  { name: 'Sign Out', icon: FiCompass },
+const LinkItemsbottom = [
+  { name: 'Profile', icon: FiHome, url: '/' },
+  { name: 'Sign Out', icon: FiCompass, url: '/' },
 ];
 
-export default function SimpleSidebar({ children }: { children: ReactNode }) {
+export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100%" bg={useColorModeValue('white.100', 'white.900')}>
@@ -75,7 +66,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
   );
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <>
       {/* UPPER SIDEBAR */}
@@ -90,7 +81,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       >
         <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
           <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            Dashboard
+            <Link as={ReactRouter} to={'/'}>
+              Dashboard
+            </Link>
           </Text>
           <CloseButton
             display={{ base: 'flex', md: 'none' }}
@@ -98,9 +91,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           />
         </Flex>
         {LinkItems.map(link => (
-          <NavItem key={link.name} icon={link.icon}>
-            {link.name}
-          </NavItem>
+          <Link as={ReactRouter} to={link.url}>
+            <NavItem key={link.name} icon={link.icon}>
+              {link.name}
+            </NavItem>
+          </Link>
         ))}
 
         {/* LOWER SIDEBAR */}
@@ -125,11 +120,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   );
 };
 
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: ReactText;
-}
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+// const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Link
       href="#"
@@ -165,10 +157,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   );
 };
 
-interface MobileProps extends FlexProps {
-  onOpen: () => void;
-}
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}

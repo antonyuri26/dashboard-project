@@ -1,14 +1,7 @@
-import { Heading } from '@chakra-ui/react';
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Stack,
-  Text,
-  Button,
-} from '@chakra-ui/react';
+import { Card } from '@chakra-ui/react';
+import React from 'react';
+import Chart from 'react-apexcharts';
+import { state } from '../../../data/dummy-data';
 
 const Container4 = () => {
   return (
@@ -20,29 +13,19 @@ const Container4 = () => {
       ml="4"
       mb="4"
     >
-      <Image
-        objectFit="cover"
-        maxW={{ base: '100%', sm: '200px' }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
-      />
-
-      <Stack>
-        <CardBody>
-          <Heading size="md">The perfect latte</Heading>
-
-          <Text py="2">
-            Caffè latte is a coffee beverage of Italian origin made with
-            espresso and steamed milk.
-          </Text>
-        </CardBody>
-
-        <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            Buy Latte
-          </Button>
-        </CardFooter>
-      </Stack>
+      <div className="app">
+        <div className="row">
+          <div className="mixed-chart">
+            <Chart
+              options={state.options}
+              series={state.series}
+              type="bar"
+              width="530"
+              height="355"
+            />
+          </div>
+        </div>
+      </div>
     </Card>
   );
 };

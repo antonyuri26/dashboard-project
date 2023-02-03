@@ -6,7 +6,7 @@ const HeadingText = () => {
   return (
     <>
       <Divider orientation="horizontal" mt="2rem" />
-      <Heading textAlign="center" marginY="3rem" id="features">
+      <Heading textAlign="center" marginY="3rem" id="features" mt={20}>
         Features
       </Heading>
     </>

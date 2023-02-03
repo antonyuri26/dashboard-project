@@ -20,6 +20,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Img,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -45,22 +46,28 @@ export default function WithSubnavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const dispatchAuth = useDispatch();
-  const dispatchNav1 = useDispatch();
+  const dispatchNav = useDispatch();
 
   const isAuth = useSelector(state => state.auth.isAuthenticated);
 
+  const logoOnClickHandler = () => {
+    dispatchNav(navActions.navChange('reset'));
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
   const signInHandler = id => {
-    dispatchNav1(navActions.navChange(id));
+    dispatchNav(navActions.navChange(id));
     navigate('/signin');
   };
 
   const signupHandler = id => {
-    dispatchNav1(navActions.navChange(id));
+    dispatchNav(navActions.navChange('reset'));
     navigate('/signup');
   };
 
   const signOutHandler = () => {
     dispatchAuth(authActions.logOut());
+    dispatchNav(navActions.navChange());
     navigate('/signin');
   };
 
@@ -76,6 +83,8 @@ export default function WithSubnavigation(props) {
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}
+        position={!isAuth && 'fixed'}
+        width={!isAuth ? '70%' : '100%'}
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -97,14 +106,13 @@ export default function WithSubnavigation(props) {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Link as={ReactRouter} to="/">
-              <Box w={8} h={8}>
-                <img src={logo} alt="Logo" />
-              </Box>
+            <Link as={ReactRouter} to="/" onClick={logoOnClickHandler}>
+              {/* LOGO  */}
+              <Img src={logo} alt="Logo" w={8} h={8} />
             </Link>
           </Text>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'none', md: 'flex' }} ml={10} pt="1">
             <DesktopNav navPageChangeHandler={props.navPageChangeHandler} />
           </Flex>
         </Flex>
@@ -124,6 +132,7 @@ export default function WithSubnavigation(props) {
               // href={'/signin'}
               // id={'sidnin'}
               onClick={() => signInHandler('signin')}
+              cursor={'pointer'}
             >
               Sign In
             </Button>
@@ -395,31 +404,31 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Components',
-    icon: <ChevronDownIcon paddingLeft="3px" w={5} h={5} />,
+    icon: <ChevronDownIcon paddingleft="3px" w={5} h={5} />,
     children: [
       {
         label: 'Application',
         subLabel: 'Trending Design to inspire you',
         href: '/application',
-        icon: <ImStatsBars2 paddingLeft="3px" w={8} h={8} />,
+        icon: <ImStatsBars2 paddingleft="3px" w={8} h={8} />,
       },
       {
         label: 'E-Commerce',
         subLabel: 'Up-and-coming Designers',
         href: '/ecommerce',
-        icon: <AiOutlineShoppingCart paddingLeft="3px" w={8} h={8} />,
+        icon: <AiOutlineShoppingCart paddingleft="3px" w={8} h={8} />,
       },
       {
         label: 'Marketing',
         subLabel: 'Up-and-coming Designers',
         href: '/marketing',
-        icon: <AiOutlineShop paddingLeft="3px" w={8} h={8} />,
+        icon: <AiOutlineShop paddingleft="3px" w={8} h={8} />,
       },
       {
         label: 'Community',
         subLabel: 'Up-and-coming Designers',
         href: '/community',
-        icon: <BsPeople paddingLeft="3px" w={6} h={6} />,
+        icon: <BsPeople paddingleft="3px" w={6} h={6} />,
       },
     ],
   },

@@ -10,7 +10,7 @@ const Themes = () => {
   const images = useLoaderData();
   return (
     <>
-      <Heading textAlign="center" marginY="3rem" id="#themes">
+      <Heading textAlign="center" marginY="3rem" id="#themes" pt={'50'}>
         Themes
       </Heading>
       {/* <Box boxSize="md">

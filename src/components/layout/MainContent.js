@@ -10,7 +10,7 @@ import Footer from './dashboard/Footer';
 
 const MainContent = () => {
   return (
-    <Box mt="6" ml="-2">
+    <Box mt="25" ml="-2">
       <CardHeaderDash />
       <Box display="flex">
         <Container1 />
