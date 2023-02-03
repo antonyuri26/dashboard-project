@@ -1,5 +1,4 @@
 import React from 'react';
-// import MainContent from './MainContent';
 
 import {
   IconButton,
@@ -59,7 +58,7 @@ export default function SimpleSidebar({ children }) {
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* {children} */}
+        {children}
         {/* <MainContent /> */}
       </Box>
     </Box>
@@ -81,9 +80,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       >
         <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
           <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            <Link as={ReactRouter} to={'/'}>
-              Dashboard
-            </Link>
+            Dashboard
           </Text>
           <CloseButton
             display={{ base: 'flex', md: 'none' }}
@@ -91,11 +88,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
           />
         </Flex>
         {LinkItems.map(link => (
-          <Link as={ReactRouter} to={link.url}>
-            <NavItem key={link.name} icon={link.icon}>
-              {link.name}
-            </NavItem>
-          </Link>
+          <NavItem key={link.name} icon={link.icon}>
+            {link.name}
+          </NavItem>
         ))}
 
         {/* LOWER SIDEBAR */}

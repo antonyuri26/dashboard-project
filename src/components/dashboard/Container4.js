@@ -1,7 +1,7 @@
 import { Card } from '@chakra-ui/react';
 import React from 'react';
 import Chart from 'react-apexcharts';
-import { state } from '../../../data/dummy-data';
+import { state } from '../../data/dummy-data';
 
 const Container4 = () => {
   return (

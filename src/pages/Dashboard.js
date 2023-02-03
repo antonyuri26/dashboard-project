@@ -1,8 +1,8 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import MainDashboardArea from '../components/layout/MainDashboardArea';
 import MainContent from '../components/layout/MainContent';
-import SideBar1 from '../components/layout/dashboard/SideBar1';
-import Footer from '../components/layout/dashboard/Footer';
+// import SideBar1 from '../components/layout/dashboard/SideBar1';
+import SideBar1 from '../components/dashboard/SideBar1';
 
 const Dashboard = () => {
   return (
