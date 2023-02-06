@@ -9,9 +9,7 @@ import classes from './Container3.module.css';
 const Container3 = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
 
-  let graph = '';
-
-  graph = (
+  let graph = (
     <Chart
       options={data.options}
       series={data.series}

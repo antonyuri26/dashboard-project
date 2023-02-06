@@ -26,8 +26,11 @@ import { authActions } from '../../store/index';
 import { navActions } from '../../store/index';
 import { modalActions } from '../../store/index';
 import { sideNavActions } from '../../store/index';
+import { useSelector } from 'react-redux';
 
 import MainContent from '../layout/MainContent';
+import Billing from '../pages/Billing';
+import Settings from '../pages/Settings';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },
@@ -44,6 +47,22 @@ const LinkItemsbottom = [
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const isBillingOpen = useSelector(state => state.sidnav.isBillingOn);
+  const isSettingOpen = useSelector(state => state.sidnav.isSettingOn);
+
+  let pageShow = '';
+  if (isBillingOpen) {
+    pageShow = <Billing />;
+  }
+
+  if (isSettingOpen) {
+    pageShow = <Settings />;
+  }
+
+  if (isBillingOpen === false && isSettingOpen === false) {
+    pageShow = <MainContent />;
+  }
 
   return (
     <Box minH="100%" bg={useColorModeValue('white.100', 'white.900')}>
@@ -67,8 +86,8 @@ export default function SimpleSidebar({ children }) {
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
-        <MainContent />
+        {/* {children} */}
+        {pageShow}
       </Box>
     </Box>
   );

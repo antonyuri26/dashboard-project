@@ -72,7 +72,12 @@ const Container5 = () => {
                 <AvatarGroup size="md" max={4}>
                   {Avatars.map(avatar => (
                     <Wrap>
-                      <Avatar name={avatar.name} src={avatar.src} size="sm" />
+                      <Avatar
+                        name={avatar.name}
+                        src={avatar.src}
+                        size="sm"
+                        key={avatar.name}
+                      />
                     </Wrap>
                   ))}
                 </AvatarGroup>

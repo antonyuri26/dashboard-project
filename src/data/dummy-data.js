@@ -4,7 +4,7 @@ export const state = {
   options: {
     chart: {
       id: 'basic-bar',
-      width: '100',
+      width: '100%',
     },
     xaxis: {
       categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],

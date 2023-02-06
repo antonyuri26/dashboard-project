@@ -8,13 +8,12 @@ import classes from './Container4.module.css';
 const Container4 = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
 
-  let graph = '';
-  graph = (
+  let graph = (
     <Chart
       options={state.options}
       series={state.series}
       type="bar"
-      className={classes.graphic}
+      className={classes.graphicBar}
       height="355"
     />
   );
@@ -30,11 +29,6 @@ const Container4 = () => {
       pt="2"
     >
       {graph}
-      {/* <div className="app">
-        <div className="row">
-          <div className="mixed-chart">{graph}</div>
-        </div>
-      </div> */}
     </Card>
   );
 };

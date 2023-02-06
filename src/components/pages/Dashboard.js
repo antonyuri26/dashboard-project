@@ -24,18 +24,18 @@ const Dashboard = () => {
     dispatchMod(modalActions.modalHandler('reset'));
   };
 
-  let pageShow = '';
-  if (isBillingOpen) {
-    pageShow = <Billing />;
-  }
+  // let pageShow = '';
+  // if (isBillingOpen) {
+  //   pageShow = <Billing />;
+  // }
 
-  if (isSettingOpen) {
-    pageShow = <Settings />;
-  }
+  // if (isSettingOpen) {
+  //   pageShow = <Settings />;
+  // }
 
-  if (isBillingOpen === false && isSettingOpen === false) {
-    pageShow = <MainContent />;
-  }
+  // if (isBillingOpen === false && isSettingOpen === false) {
+  //   pageShow = <MainContent />;
+  // }
 
   return (
     <>
