@@ -6,6 +6,9 @@ import { Stack } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
 import Display from '../components/Display';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const Themes = () => {
   const images = useLoaderData();
   return (
@@ -13,10 +16,6 @@ const Themes = () => {
       <Heading textAlign="center" marginY="3rem" id="#themes" pt={'50'}>
         Themes
       </Heading>
-      {/* <Box boxSize="md">
-        <Image src={images[1].download_url} alt="Dan Abramov" />
-      </Box> */}
-
       <Stack
         direction="row"
         flexWrap="wrap"
@@ -24,7 +23,13 @@ const Themes = () => {
         width="100%"
       >
         {images.map(image => (
-          <Display src={image.download_url} alt={image.author} key={image.id} />
+          <Display
+            src={image.download_url}
+            alt={image.author}
+            key={image.id}
+            width={'200px'}
+            loading={'lazy'}
+          />
         ))}
       </Stack>
     </>

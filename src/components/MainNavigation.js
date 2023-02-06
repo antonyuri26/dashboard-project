@@ -68,6 +68,7 @@ export default function WithSubnavigation(props) {
   const signOutHandler = () => {
     dispatchAuth(authActions.logOut());
     dispatchNav(navActions.navChange());
+    window.localStorage.removeItem('token');
     navigate('/signin');
   };
 

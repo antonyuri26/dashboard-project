@@ -13,13 +13,14 @@ const Container3 = () => {
       width="55%"
       ml="0"
       mb="4"
+      pt="2"
     >
       <Chart
         options={data.options}
         series={data.series}
         type="candlestick"
         height={350}
-        width="500"
+        width="720"
       />
     </Card>
   );

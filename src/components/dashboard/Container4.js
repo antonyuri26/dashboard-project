@@ -12,6 +12,7 @@ const Container4 = () => {
       width="59%"
       ml="4"
       mb="4"
+      pt="2"
     >
       <div className="app">
         <div className="row">
@@ -20,7 +21,7 @@ const Container4 = () => {
               options={state.options}
               series={state.series}
               type="bar"
-              width="530"
+              width="780"
               height="355"
             />
           </div>

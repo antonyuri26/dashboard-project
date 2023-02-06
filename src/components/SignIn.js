@@ -19,6 +19,7 @@ import { Field, Form, Formik } from 'formik';
 import { authActions } from '../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { setAuth } from './AuthProtection';
 
 export default function SimpleCard() {
   const navigate = useNavigate();
@@ -72,8 +73,8 @@ export default function SimpleCard() {
                   alert(JSON.stringify(values, null, 2));
                   actions.setSubmitting(false);
                   dispatch(authActions.logIn());
-
-                  navigate('/');
+                  window.localStorage.setItem('token', Math.random());
+                  navigate('/dashboard');
                 }, 1000);
               }}
             >

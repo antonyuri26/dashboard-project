@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import Dashboard from './Dashboard';
 import { navActions } from '../store';
 import { useDispatch } from 'react-redux';
-import { Box, Divider } from '@chakra-ui/react';
+import { Box, Divider, Flex } from '@chakra-ui/react';
 
 const HomePage = () => {
   const isAuth1 = useSelector(state => state.auth.isAuthenticated);
@@ -30,29 +30,43 @@ const HomePage = () => {
   }, [nav]);
 
   return (
-    <>
-      {/* <SplitScreen /> */}
-      {/* <WithBackgroundImage /> */}
-      {isAuth1 ? (
-        <Dashboard />
-      ) : (
-        <div>
-          <CallToActionWithIllustration />
-          <Box bg={'rgb(247,250,252)'}>
-            <HeadingText />
-            <Box pb="35">
-              <SimpleThreeColumns />
-              <SimpleThreeColumns />
-            </Box>
-          </Box>
-          <Divider />
-          <ThreeTierPricing />
-          <WithSpeechBubbles />
-          <BasicStatistics />
-          <LargeWithLogoLeft />
-        </div>
-      )}
-    </>
+    // <div>
+    //   {isAuth1 ? (
+    //     <Dashboard />
+    //   ) : (
+    //     <>
+    //       <CallToActionWithIllustration />
+    //       <Box bg={'rgb(247,250,252)'}>
+    //         <HeadingText />
+    //         <Box pb="35">
+    //           <SimpleThreeColumns />
+    //           <SimpleThreeColumns />
+    //         </Box>
+    //       </Box>
+    //       <Divider />
+    //       <ThreeTierPricing />
+    //       <WithSpeechBubbles />
+    //       <BasicStatistics />
+    //       <LargeWithLogoLeft />
+    //     </>
+    //   )}
+    // </div>
+    <div>
+      {/* <Dashboard /> */}
+      <CallToActionWithIllustration />
+      <Box bg={'rgb(247,250,252)'}>
+        <HeadingText />
+        <Box pb="35">
+          <SimpleThreeColumns />
+          <SimpleThreeColumns />
+        </Box>
+      </Box>
+      <Divider />
+      <ThreeTierPricing />
+      <WithSpeechBubbles />
+      <BasicStatistics />
+      <LargeWithLogoLeft />
+    </div>
   );
 };
 

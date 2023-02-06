@@ -20,22 +20,30 @@ import {
   FiSettings,
   FiMenu,
 } from 'react-icons/fi';
-import { Link as ReactRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/index';
+import { navActions } from '../../store/index';
+import { modalActions } from '../../store/index';
+import { sideNavActions } from '../../store/index';
+import { modalNewsletterAction } from '../../store/index';
 
 const LinkItems = [
-  { name: 'Dashboard', icon: FiHome, url: '/' },
-  { name: 'Tables', icon: FiTrendingUp, url: '/' },
-  { name: 'Billing', icon: FiCompass, url: '/' },
-  { name: 'Settings', icon: FiSettings, url: '/' },
+  { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },
+  { name: 'Tables', icon: FiTrendingUp, url: '/', id: 'tables' },
+  { name: 'Billing', icon: FiCompass, url: '/', id: 'billing' },
+  { name: 'Settings', icon: FiSettings, url: '/', id: 'settings' },
 ];
 
 const LinkItemsbottom = [
-  { name: 'Profile', icon: FiHome, url: '/' },
-  { name: 'Sign Out', icon: FiCompass, url: '/' },
+  { name: 'Profile', icon: FiHome, url: '/', id: 'profile' },
+  { name: 'Newsletter', icon: FiHome, url: '/', id: 'newsletter' },
+  { name: 'Sign Out', icon: FiCompass, url: '/', id: 'signout' },
 ];
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box minH="100%" bg={useColorModeValue('white.100', 'white.900')}>
       <SidebarContent
@@ -88,7 +96,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           />
         </Flex>
         {LinkItems.map(link => (
-          <NavItem key={link.name} icon={link.icon}>
+          <NavItem key={link.name} icon={link.icon} id={link.id}>
             {link.name}
           </NavItem>
         ))}
@@ -106,7 +114,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
 
         {LinkItemsbottom.map(link => (
-          <NavItem key={link.name} icon={link.icon}>
+          <NavItem key={link.name} icon={link.icon} id={link.id}>
             {link.name}
           </NavItem>
         ))}
@@ -115,13 +123,52 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-// const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, id, children, ...rest }) => {
+  //handling clicks on sideBar
+  const navigate = useNavigate();
+  const dispatchAuth = useDispatch();
+  const dispatchNav = useDispatch();
+  const dispatchMod = useDispatch();
+  const dispatchSideNav = useDispatch();
+
+  const sideBarClickHandler = id => {
+    switch (id) {
+      case 'dashboard':
+        dispatchSideNav(sideNavActions.sideNavHandler('dashboard'));
+        navigate('/dashboard');
+        break;
+      case 'tables':
+        dispatchMod(modalActions.modalHandler('table'));
+        break;
+      case 'billing':
+        dispatchSideNav(sideNavActions.sideNavHandler('billing'));
+        break;
+      case 'settings':
+        dispatchSideNav(sideNavActions.sideNavHandler('settings'));
+        break;
+      case 'profile':
+        dispatchMod(modalActions.modalHandler('profile'));
+        break;
+      case 'newsletter':
+        dispatchMod(modalActions.modalHandler('newsletter'));
+        break;
+      case 'signout':
+        dispatchAuth(authActions.logOut());
+        dispatchNav(navActions.navChange());
+        navigate('/signin');
+        break;
+      default:
+      // code block
+    }
+  };
+
   return (
     <Link
       href="#"
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}
+      onClick={() => sideBarClickHandler(id)}
+      id={id}
     >
       <Flex
         align="center"
@@ -147,6 +194,7 @@ const NavItem = ({ icon, children, ...rest }) => {
           />
         )}
         {children}
+        {/* {isModalOpen && <ModalBox onClose={closeModalHandler} />} */}
       </Flex>
     </Link>
   );

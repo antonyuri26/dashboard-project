@@ -12,9 +12,11 @@ import {
 const CardHeaderDash = () => {
   return (
     <SimpleGrid
-      spacing={4}
-      templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+      spacing={8}
+      // templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+      templateColumns="repeat(auto-fill, minmax(270px, 1fr))"
       alignItems="center"
+      justifyItems="stretch"
     >
       <Card align="flex-start">
         <CardHeader pt="2" pb="0">
