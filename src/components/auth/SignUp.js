@@ -38,7 +38,7 @@ export default function SignupCard() {
       password: inputPassword.current.value,
     };
     console.log(data);
-    alert('USer Created Successfully. Please SignIn to access your Account.');
+    alert('User created. Log in to cotinue.');
     inputFirstName.current.value = '';
     inputLastName.current.value = '';
     inputEmail.current.value = '';

@@ -4,6 +4,7 @@ export const state = {
   options: {
     chart: {
       id: 'basic-bar',
+      width: '100',
     },
     xaxis: {
       categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
@@ -20,7 +21,7 @@ export const state = {
       breakpoint: 1000,
       options: {
         chart: {
-          width: '700px',
+          width: '820px',
         },
       },
     },
