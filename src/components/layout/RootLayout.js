@@ -1,4 +1,4 @@
-import WithSubnavigation from '../components/MainNavigation';
+import WithSubnavigation from './MainNavigation';
 import { Outlet } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
 

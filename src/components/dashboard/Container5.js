@@ -1,48 +1,146 @@
-import { Heading } from '@chakra-ui/react';
 import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
   Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Stack,
-  Text,
-  Button,
+  Wrap,
 } from '@chakra-ui/react';
+import { SiAdobeaudition } from 'react-icons/si';
+import { SiAdobedreamweaver } from 'react-icons/si';
+import { SiAdobeindesign } from 'react-icons/si';
+import { SiAbstract } from 'react-icons/si';
+import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react';
+import { Progress } from '@chakra-ui/react';
 
 const Container5 = () => {
+  const Avatars = [
+    {
+      nam: 'Ryan Florence',
+      src: 'https://bit.ly/ryan-florence',
+    },
+    {
+      name: 'Segun Adebayo',
+      src: 'https://bit.ly/sage-adebayo',
+    },
+    {
+      name: 'Prosper Otemuyiwa',
+      src: 'https://bit.ly/prosper-baba',
+    },
+    {
+      name: 'Christian Nwamba',
+      src: 'https://bit.ly/code-beast',
+    },
+  ];
+
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      width="65%"
-      height="400px"
+      width="40%"
+      ml="0"
       mb="4"
     >
-      <Image
-        objectFit="cover"
-        maxW={{ base: '100%', sm: '200px' }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
-      />
+      <TableContainer>
+        <Table size="sm">
+          <TableCaption>Imperial to metric conversion factors</TableCaption>
+          <Thead>
+            <Tr>
+              <Th>COMPANIES</Th>
+              <Th>MEMBERS</Th>
+              <Th>BUDGET</Th>
+              <Th>COMPLETION</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td style={{ width: '200px' }}>
+                <SiAdobeaudition style={{ display: 'inline' }} />
+                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+              </Td>
+              <Td style={{ width: '150px' }}>
+                <AvatarGroup size="md" max={4}>
+                  {Avatars.map(avatar => (
+                    <Wrap>
+                      <Avatar name={avatar.name} src={avatar.src} size="sm" />
+                    </Wrap>
+                  ))}
+                </AvatarGroup>
+              </Td>
 
-      <Stack>
-        <CardBody>
-          <Heading size="md">The perfect latte</Heading>
-
-          <Text py="2">
-            Caffè latte is a coffee beverage of Italian origin made with
-            espresso and steamed milk.
-          </Text>
-        </CardBody>
-
-        <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            Buy Latte
-          </Button>
-        </CardFooter>
-      </Stack>
+              <Td style={{ width: '140px' }}>$14,000</Td>
+              <Td style={{ width: '150px' }}>
+                <Progress hasStripe value={64} />
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <SiAdobedreamweaver style={{ display: 'inline' }} />
+                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+              </Td>
+              <Td>
+                <AvatarGroup size="md" max={4}>
+                  {Avatars.map(avatar => (
+                    <Wrap>
+                      <Avatar name={avatar.name} src={avatar.src} size="sm" />
+                    </Wrap>
+                  ))}
+                </AvatarGroup>
+              </Td>
+              <Td>$14,000</Td>
+              <Td>
+                <Progress hasStripe value={25} />
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>
+                <SiAdobeindesign style={{ display: 'inline' }} />
+                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+              </Td>
+              <Td>
+                <AvatarGroup size="md" max={4}>
+                  {Avatars.map(avatar => (
+                    <Wrap>
+                      <Avatar name={avatar.name} src={avatar.src} size="sm" />
+                    </Wrap>
+                  ))}
+                </AvatarGroup>
+              </Td>
+              <Td>$14,000</Td>
+              <Td>
+                <Progress hasStripe value={80} />
+              </Td>
+            </Tr>
+          </Tbody>
+          <Tfoot>
+            <Tr>
+              <Td>
+                <SiAbstract style={{ display: 'inline' }} />
+                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+              </Td>
+              <Td>
+                <AvatarGroup size="md" max={4}>
+                  {Avatars.map(avatar => (
+                    <Wrap>
+                      <Avatar name={avatar.name} src={avatar.src} size="sm" />
+                    </Wrap>
+                  ))}
+                </AvatarGroup>
+              </Td>
+              <Td>$14,000</Td>
+              <Td>
+                <Progress hasStripe value={89} />
+              </Td>
+            </Tr>
+          </Tfoot>
+        </Table>
+      </TableContainer>
     </Card>
   );
 };

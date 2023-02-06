@@ -1,13 +1,8 @@
 import React from 'react';
 import { Heading } from '@chakra-ui/react';
 import { useLoaderData } from 'react-router-dom';
-import { Image } from '@chakra-ui/react';
 import { Stack } from '@chakra-ui/react';
-import { Box } from '@chakra-ui/react';
-import Display from '../components/Display';
-
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import Display from '../homePage/Display';
 
 const Themes = () => {
   const images = useLoaderData();

@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { FormErrorMessage } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { authActions } from '../store';
+import { authActions } from '../../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setAuth } from './AuthProtection';

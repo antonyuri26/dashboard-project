@@ -12,9 +12,9 @@ import {
 const CardHeaderDash = () => {
   return (
     <SimpleGrid
-      spacing={8}
+      spacing={5}
       // templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
-      templateColumns="repeat(auto-fill, minmax(270px, 1fr))"
+      templateColumns="repeat(auto-fill, minmax(210px, 1fr))"
       alignItems="center"
       justifyItems="stretch"
     >
@@ -60,6 +60,33 @@ const CardHeaderDash = () => {
             Total Sales
           </Heading>
         </CardHeader>
+
+        <CardBody pt="0" pb="2">
+          <Text fontSize="sm" as="b">
+            $173,000
+          </Text>
+        </CardBody>
+      </Card>
+      <Card align="flex-start">
+        <CardHeader pt="2" pb="0">
+          <Heading size="xs" color="grey">
+            Total Sales
+          </Heading>
+        </CardHeader>
+
+        <CardBody pt="0" pb="2">
+          <Text fontSize="sm" as="b">
+            $173,000
+          </Text>
+        </CardBody>
+      </Card>
+      <Card align="flex-start">
+        <CardHeader pt="2" pb="0">
+          <Heading size="xs" color="grey">
+            Total Sales
+          </Heading>
+        </CardHeader>
+
         <CardBody pt="0" pb="2">
           <Text fontSize="sm" as="b">
             $173,000

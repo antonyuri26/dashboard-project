@@ -3,29 +3,28 @@ import { ChakraProvider, Box, Grid, theme } from '@chakra-ui/react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 
-import RootLayout from './pages/RootLayout';
-import HomePage from './pages/HomePage';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import ErrorPage from './pages/ErrorPage';
-import Application from './pages/Application';
-import Ecommerce from './pages/Ecommerce';
-import Marketing from './pages/Marketing';
-import Community from './pages/Community';
+import RootLayout from './components/layout/RootLayout';
+import HomePage from './components/pages/HomePage';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import ErrorPage from './components/pages/ErrorPage';
+import Application from './components/pages/Application';
+import Ecommerce from './components/pages/Ecommerce';
+import Marketing from './components/pages/Marketing';
+import Community from './components/pages/Community';
 // import Themes from './pages/Themes';
-import Pricing from './pages/Pricing';
-import Documentation from './pages/Documentation';
+import Pricing from './components/pages/Pricing';
+import Documentation from './components/pages/Documentation';
 // import Dashboard from './pages/Dashboard';
-import AuthProtection from './components/AuthProtection';
+import AuthProtection from './components/auth/AuthProtection';
 import { json } from 'react-router-dom';
 
-const Themes = lazy(() => import('./pages/Themes'));
-const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Themes = lazy(() => import('./components/pages/Themes'));
+const Dashboard = lazy(() => import('./components/pages/Dashboard'));
 
 const imageLoader = async () => {
-  const response = await fetch('https://picsum.photos/v2/list?limit=30');
+  const response = await fetch(`https://picsum.photos/v2/list?limit=6`);
   const data = await response.json();
-  // console.log(data);
 
   if (!response.ok) {
     throw json({ message: 'Could not Fetch Images' }, { status: 500 });
@@ -51,7 +50,6 @@ const router = createBrowserRouter([
       { path: '/ecommerce', element: <Ecommerce /> },
       { path: '/marketing', element: <Marketing /> },
       { path: '/community', element: <Community /> },
-      // { path: '/themes', element: <Themes />, loader: imageLoader }, //add lazy loading
       {
         path: '/themes',
         element: (
@@ -60,7 +58,7 @@ const router = createBrowserRouter([
           </Suspense>
         ),
         loader: () => imageLoader(),
-      }, //add lazy loading
+      },
       { path: '/pricing', element: <Pricing /> },
       { path: '/documentation', element: <Documentation /> },
     ],
@@ -75,14 +73,6 @@ const router = createBrowserRouter([
       </AuthProtection>
     ),
     errorElement: <ErrorPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <Dashboard />,
-    //   },
-    //   // { path: '/dashboard/billing', element: <Billing /> },
-    //   // { path: '/dashboard/newsletter', element: <NewsLetter /> },
-    // ],
   },
 ]);
 

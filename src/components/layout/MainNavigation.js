@@ -36,9 +36,9 @@ import { BsPeople } from 'react-icons/bs';
 
 import { useNavigate } from 'react-router-dom';
 import { Link as ReactRouter } from 'react-router-dom';
-import logo from '../images/logo.png';
-import { authActions } from '../store';
-import { navActions } from '../store';
+import logo from '../../images/logo.png';
+import { authActions } from '../../store';
+import { navActions } from '../../store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
@@ -67,7 +67,7 @@ export default function WithSubnavigation(props) {
 
   const signOutHandler = () => {
     dispatchAuth(authActions.logOut());
-    dispatchNav(navActions.navChange());
+    dispatchNav(navActions.navChange()); //need to reset the other states here
     window.localStorage.removeItem('token');
     navigate('/signin');
   };

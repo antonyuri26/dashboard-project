@@ -27,6 +27,7 @@ import { navActions } from '../../store/index';
 import { modalActions } from '../../store/index';
 import { sideNavActions } from '../../store/index';
 import { modalNewsletterAction } from '../../store/index';
+import MainContent from '../layout/MainContent';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },
@@ -67,7 +68,7 @@ export default function SimpleSidebar({ children }) {
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
-        {/* <MainContent /> */}
+        <MainContent />
       </Box>
     </Box>
   );
@@ -155,6 +156,7 @@ const NavItem = ({ icon, id, children, ...rest }) => {
       case 'signout':
         dispatchAuth(authActions.logOut());
         dispatchNav(navActions.navChange());
+        window.localStorage.removeItem('token');
         navigate('/signin');
         break;
       default:

@@ -1,17 +1,18 @@
-import { Box } from '@chakra-ui/react';
-import MainDashboardArea from '../components/layout/MainDashboardArea';
-import MainContent from '../components/layout/MainContent';
-import SideBar1 from '../components/dashboard/SideBar1';
-import MainNavigation from '../components/MainNavigation';
+import { Box, Flex } from '@chakra-ui/react';
+import MainDashboardArea from '../layout/MainDashboardArea';
+import MainContent from '../layout/MainContent';
+// import SideBar1 from '../dashboard/SideBar1';
+import SimpleSidebar from '../dashboard/SideBar1';
+import MainNavigation from '../layout/MainNavigation';
 import { useSelector, useDispatch } from 'react-redux';
-import ModalBox from '../components/dashboard/Modal';
-import { modalActions } from '../store/index';
+import ModalBox from '../dashboard/Modal';
+import { modalActions } from '../../store/index';
 // import { modalNewsletterAction } from '../store/index';
-import TableModal from '../components/dashboard/Table';
-import Billing from './Billing';
-import Settings from './Settings';
-import ProfileModal from '../components/dashboard/ProfileModal';
-import NewsLetter from '../components/dashboard/NewsLetter';
+import TableModal from '../dashboard/Table';
+import Billing from '../pages/Billing';
+import Settings from '../pages/Settings';
+import ProfileModal from '../dashboard/ProfileModal';
+import NewsLetter from '../dashboard/NewsLetter';
 
 const Dashboard = () => {
   const isTablesOpen = useSelector(state => state.modal.isOpen);
@@ -41,13 +42,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <Box px="10">
-        <MainNavigation />
-      </Box>
+      {/* <Flex px="10"> */}
+      <MainNavigation />
 
       <MainDashboardArea>
-        <SideBar1 />
-        {pageShow}
+        <SimpleSidebar />
+        {/* {pageShow} */}
         {isTablesOpen && (
           <ModalBox onClose={() => closeModalHandler('table')}>
             <TableModal />
@@ -64,6 +64,7 @@ const Dashboard = () => {
           </ModalBox>
         )}
       </MainDashboardArea>
+      {/* </Flex> */}
     </>
   );
 };

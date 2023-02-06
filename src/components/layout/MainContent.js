@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import CardHeaderDash from '../dashboard/CardHeaderDash';
 import Container1 from '../dashboard/Container1';
@@ -7,6 +7,7 @@ import Container3 from '../dashboard/Container3';
 import Container4 from '../dashboard/Container4';
 import Container5 from '../dashboard/Container5';
 import Container6 from '../dashboard/Container6';
+import Container7 from '../dashboard/Container7';
 import Footer from '../dashboard/Footer';
 
 const MainContent = () => {
@@ -24,6 +25,7 @@ const MainContent = () => {
       <Box display="flex">
         <Container5 />
         <Container6 />
+        <Container7 />
       </Box>
       <Footer />
     </Box>
