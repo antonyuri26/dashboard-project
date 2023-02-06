@@ -18,7 +18,7 @@ const Container2 = () => {
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      width="49%"
+      width="50%"
       ml="4"
       mt="4"
       mb="4"

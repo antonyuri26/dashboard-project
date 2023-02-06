@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import CardHeaderDash from '../dashboard/CardHeaderDash';
 import Container1 from '../dashboard/Container1';
@@ -9,23 +9,25 @@ import Container5 from '../dashboard/Container5';
 import Container6 from '../dashboard/Container6';
 import Container7 from '../dashboard/Container7';
 import Footer from '../dashboard/Footer';
+import { useMediaQuery } from '@chakra-ui/react';
 
 const MainContent = () => {
+  const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
   return (
     <Box mt="25" ml="-2">
       <CardHeaderDash />
       <Box display="flex">
         <Container1 />
-        <Container2 />
+        {isLargerThan900 ? <Container2 /> : ''}
       </Box>
-      <Box display="flex">
+      <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
         <Container3 />
         <Container4 />
       </Box>
-      <Box display="flex">
+      <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
         <Container5 />
         <Container6 />
-        <Container7 />
+        {isLargerThan900 ? <Container7 /> : ''}
       </Box>
       <Footer />
     </Box>

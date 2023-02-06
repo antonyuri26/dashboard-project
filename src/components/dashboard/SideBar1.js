@@ -26,7 +26,7 @@ import { authActions } from '../../store/index';
 import { navActions } from '../../store/index';
 import { modalActions } from '../../store/index';
 import { sideNavActions } from '../../store/index';
-import { modalNewsletterAction } from '../../store/index';
+
 import MainContent from '../layout/MainContent';
 
 const LinkItems = [

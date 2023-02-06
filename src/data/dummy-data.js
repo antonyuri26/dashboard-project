@@ -15,7 +15,19 @@ export const state = {
       data: [30, 40, 45, 50, 49, 60, 70, 91],
     },
   ],
+  responsive: [
+    {
+      breakpoint: 1000,
+      options: {
+        chart: {
+          width: '700px',
+        },
+      },
+    },
+  ],
 };
+
+//data for candle stick
 
 export const data = {
   options: {
@@ -23,6 +35,16 @@ export const data = {
       id: 'basic-canddle',
     },
   },
+  responsive: [
+    {
+      breakpoint: 1000,
+      options: {
+        chart: {
+          width: '700px',
+        },
+      },
+    },
+  ],
   series: [
     {
       data: [

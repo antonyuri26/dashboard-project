@@ -8,13 +8,16 @@ import {
   Text,
   Button,
 } from '@chakra-ui/react';
+import { useMediaQuery } from '@chakra-ui/react';
 
 const CardHeaderDash = () => {
+  const [isLargerThan600] = useMediaQuery('(min-width: 600px)');
+
   return (
     <SimpleGrid
       spacing={5}
       // templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
-      templateColumns="repeat(auto-fill, minmax(210px, 1fr))"
+      templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
       alignItems="center"
       justifyItems="stretch"
     >
@@ -67,32 +70,40 @@ const CardHeaderDash = () => {
           </Text>
         </CardBody>
       </Card>
-      <Card align="flex-start">
-        <CardHeader pt="2" pb="0">
-          <Heading size="xs" color="grey">
-            Total Sales
-          </Heading>
-        </CardHeader>
+      {isLargerThan600 ? (
+        <Card align="flex-start">
+          <CardHeader pt="2" pb="0">
+            <Heading size="xs" color="grey">
+              Total Sales
+            </Heading>
+          </CardHeader>
 
-        <CardBody pt="0" pb="2">
-          <Text fontSize="sm" as="b">
-            $173,000
-          </Text>
-        </CardBody>
-      </Card>
-      <Card align="flex-start">
-        <CardHeader pt="2" pb="0">
-          <Heading size="xs" color="grey">
-            Total Sales
-          </Heading>
-        </CardHeader>
+          <CardBody pt="0" pb="2">
+            <Text fontSize="sm" as="b">
+              $173,000
+            </Text>
+          </CardBody>
+        </Card>
+      ) : (
+        ''
+      )}
+      {isLargerThan600 ? (
+        <Card align="flex-start">
+          <CardHeader pt="2" pb="0">
+            <Heading size="xs" color="grey">
+              Total Sales
+            </Heading>
+          </CardHeader>
 
-        <CardBody pt="0" pb="2">
-          <Text fontSize="sm" as="b">
-            $173,000
-          </Text>
-        </CardBody>
-      </Card>
+          <CardBody pt="0" pb="2">
+            <Text fontSize="sm" as="b">
+              $173,000
+            </Text>
+          </CardBody>
+        </Card>
+      ) : (
+        ''
+      )}
     </SimpleGrid>
   );
 };

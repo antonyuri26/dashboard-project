@@ -17,8 +17,11 @@ import { SiAdobeindesign } from 'react-icons/si';
 import { SiAbstract } from 'react-icons/si';
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react';
 import { Progress } from '@chakra-ui/react';
+import { useMediaQuery } from '@chakra-ui/react';
 
 const Container5 = () => {
+  const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
+
   const Avatars = [
     {
       nam: 'Ryan Florence',
@@ -43,7 +46,8 @@ const Container5 = () => {
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      width="40%"
+      width={isLargerThan900 ? '40%' : '100%'}
+      // width="40%"
       ml="0"
       mb="4"
     >

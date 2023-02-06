@@ -10,14 +10,16 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { useMediaQuery } from '@chakra-ui/react';
 
 const Container1 = () => {
+  const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      width="49.5%"
+      width={isLargerThan900 ? '49.5%' : '100%'}
       mt="4"
       mb="4"
     >
