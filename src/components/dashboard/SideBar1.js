@@ -29,8 +29,8 @@ import { sideNavActions } from '../../store/index';
 import { useSelector } from 'react-redux';
 
 import MainContent from '../layout/MainContent';
-import Billing from '../pages/Billing';
-import Settings from '../pages/Settings';
+import Billing from './Billing';
+import Settings from './Settings';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },

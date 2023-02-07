@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ModalBox from '../dashboard/Modal';
 import { modalActions } from '../../store/index';
 import TableModal from '../dashboard/Table';
-import Billing from '../pages/Billing';
-import Settings from '../pages/Settings';
+import Billing from '../dashboard/Billing';
+import Settings from '../dashboard/Settings';
 import ProfileModal from '../dashboard/ProfileModal';
 import NewsLetter from '../dashboard/NewsLetter';
 
