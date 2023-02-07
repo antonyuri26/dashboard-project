@@ -13,7 +13,7 @@ import {
 
 export default function SocialProfileWithImage() {
   return (
-    <Center py={6}>
+    <Center py={0} pb={2}>
       <Box
         maxW={'270px'}
         w={'full'}

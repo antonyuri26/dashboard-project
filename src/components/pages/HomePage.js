@@ -7,13 +7,12 @@ import BasicStatistics from '../homePage/Statistics';
 import LargeWithLogoLeft from '../layout/Footer';
 import CallToActionWithIllustration from '../homePage/Hero2';
 import { useSelector } from 'react-redux';
-import Dashboard from './Dashboard';
+
 import { navActions } from '../../store/index';
 import { useDispatch } from 'react-redux';
-import { Box, Divider, Flex } from '@chakra-ui/react';
+import { Box, Divider } from '@chakra-ui/react';
 
 const HomePage = () => {
-  const isAuth1 = useSelector(state => state.auth.isAuthenticated);
   const nav = useSelector(state => state.nav.navChange);
   const navId = useSelector(state => state.nav.id);
   const dispatch = useDispatch();

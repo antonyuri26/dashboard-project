@@ -15,7 +15,7 @@ import { SiAdobeaudition } from 'react-icons/si';
 import { SiAdobedreamweaver } from 'react-icons/si';
 import { SiAdobeindesign } from 'react-icons/si';
 import { SiAbstract } from 'react-icons/si';
-import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react';
+import { Avatar, AvatarGroup } from '@chakra-ui/react';
 import { Progress } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
 

@@ -72,6 +72,10 @@ export default function WithSubnavigation(props) {
     navigate('/signin');
   };
 
+  const backToDashHandler = () => {
+    navigate('/dashboard');
+  };
+
   return (
     <Box>
       <Flex
@@ -165,6 +169,20 @@ export default function WithSubnavigation(props) {
             direction={'row'}
             spacing={6}
           >
+            <Button
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'md'}
+              fontWeight={600}
+              color={'white'}
+              bg={'blue.400'}
+              href={'#'}
+              _hover={{
+                bg: 'blue.300',
+              }}
+              onClick={backToDashHandler}
+            >
+              Dashboard
+            </Button>
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'md'}

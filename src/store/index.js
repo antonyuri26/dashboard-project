@@ -17,7 +17,7 @@ const authSlice = createSlice({
   },
 });
 
-let initialNavState = { navChange: false, id: '' };
+let initialNavState = { navChange: false, backToDashOn: false, id: '' };
 
 const navSlice = createSlice({
   name: 'nav',
