@@ -9,20 +9,15 @@ import {
   Text,
   Button,
 } from '@chakra-ui/react';
-import { useMediaQuery } from '@chakra-ui/react';
 
-const Container6 = () => {
-  const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
-
+const NewsBox2 = () => {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      width={isLargerThan900 ? '35%' : '100%'}
-      // width="35%"
-      // ml="4"
-      ml={isLargerThan900 ? '4' : '0'}
+      width="35%"
+      ml="4"
       mb="4"
     >
       <Image
@@ -52,4 +47,4 @@ const Container6 = () => {
   );
 };
 
-export default Container6;
+export default NewsBox2;

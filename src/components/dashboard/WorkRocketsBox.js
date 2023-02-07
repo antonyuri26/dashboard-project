@@ -12,7 +12,7 @@ import {
 
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
-const Container2 = () => {
+const WorkRocketsBox = () => {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -52,4 +52,4 @@ const Container2 = () => {
   );
 };
 
-export default Container2;
+export default WorkRocketsBox;

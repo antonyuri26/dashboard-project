@@ -12,7 +12,7 @@ import {
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { useMediaQuery } from '@chakra-ui/react';
 
-const Container1 = () => {
+const BuildByDevsBox = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
   return (
     <Card
@@ -28,7 +28,7 @@ const Container1 = () => {
           <Text fontSize={'14'} color="grey" as="b">
             Built by Developers
           </Text>
-          <Heading size="sm">Purity UI Dashboard</Heading>
+          <Heading size="sm">UI Dashboard</Heading>
 
           <Text py="2" fontSize={'14'} color="grey">
             Caffè latte is a coffee beverage of Italian origin made with
@@ -56,4 +56,4 @@ const Container1 = () => {
   );
 };
 
-export default Container1;
+export default BuildByDevsBox;

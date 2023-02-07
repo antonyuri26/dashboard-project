@@ -19,7 +19,7 @@ import { Avatar, AvatarGroup } from '@chakra-ui/react';
 import { Progress } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
 
-const Container5 = () => {
+const CompaniesBox = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
 
   const Avatars = [
@@ -53,7 +53,7 @@ const Container5 = () => {
     >
       <TableContainer>
         <Table size="sm">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
+          <TableCaption>Top 4 Companies</TableCaption>
           <Thead>
             <Tr>
               <Th>COMPANIES</Th>
@@ -66,7 +66,9 @@ const Container5 = () => {
             <Tr>
               <Td style={{ width: '200px' }}>
                 <SiAdobeaudition style={{ display: 'inline' }} />
-                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+                <span style={{ paddingLeft: '5px' }}>
+                  Add the New Pricing Page
+                </span>
               </Td>
               <Td style={{ width: '150px' }}>
                 <AvatarGroup size="md" max={4}>
@@ -91,7 +93,7 @@ const Container5 = () => {
             <Tr>
               <Td>
                 <SiAdobedreamweaver style={{ display: 'inline' }} />
-                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+                <span style={{ paddingLeft: '5px' }}>Add Progress Track</span>
               </Td>
               <Td>
                 <AvatarGroup size="md" max={4}>
@@ -110,7 +112,7 @@ const Container5 = () => {
             <Tr>
               <Td>
                 <SiAdobeindesign style={{ display: 'inline' }} />
-                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+                <span style={{ paddingLeft: '5px' }}>Fix Platform Errors</span>
               </Td>
               <Td>
                 <AvatarGroup size="md" max={4}>
@@ -131,7 +133,9 @@ const Container5 = () => {
             <Tr>
               <Td>
                 <SiAbstract style={{ display: 'inline' }} />
-                <span style={{ paddingLeft: '5px' }}>Purity UI Version</span>
+                <span style={{ paddingLeft: '5px' }}>
+                  Launch our Mobile App
+                </span>
               </Td>
               <Td>
                 <AvatarGroup size="md" max={4}>
@@ -154,4 +158,4 @@ const Container5 = () => {
   );
 };
 
-export default Container5;
+export default CompaniesBox;

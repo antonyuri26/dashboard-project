@@ -4,9 +4,9 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { data } from '../../data/dummy-data';
 import { useMediaQuery } from '@chakra-ui/react';
-import classes from './Container3.module.css';
+import classes from './CandleGraphBox.module.css';
 
-const Container3 = () => {
+const CandleGraphBox = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
 
   let graph = (
@@ -34,4 +34,4 @@ const Container3 = () => {
   );
 };
 
-export default Container3;
+export default CandleGraphBox;

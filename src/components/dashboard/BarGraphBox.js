@@ -3,9 +3,9 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 import { state } from '../../data/dummy-data';
 import { useMediaQuery } from '@chakra-ui/react';
-import classes from './Container4.module.css';
+import classes from './BarGraphBox.module.css';
 
-const Container4 = () => {
+const BarGraphBox = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
 
   let graph = (
@@ -33,4 +33,4 @@ const Container4 = () => {
   );
 };
 
-export default Container4;
+export default BarGraphBox;

@@ -1,13 +1,13 @@
 import { Box } from '@chakra-ui/react';
 
 import CardHeaderDash from '../dashboard/CardHeaderDash';
-import Container1 from '../dashboard/Container1';
-import Container2 from '../dashboard/Container2';
-import Container3 from '../dashboard/Container3';
-import Container4 from '../dashboard/Container4';
-import Container5 from '../dashboard/Container5';
-import Container6 from '../dashboard/Container6';
-import Container7 from '../dashboard/Container7';
+import BuildByDevsBox from '../dashboard/BuildByDevsBox';
+import WorkRocketsBox from '../dashboard/WorkRocketsBox';
+import CandleGraphBox from '../dashboard/CandleGraphBox';
+import BarGraphBox from '../dashboard/BarGraphBox';
+import CompaniesBox from '../dashboard/CompaniesBox';
+import NewsBox1 from '../dashboard/NewsBox1';
+import NewsBox2 from '../dashboard/NewsBox2';
 import Footer from '../dashboard/Footer';
 import { useMediaQuery } from '@chakra-ui/react';
 
@@ -17,17 +17,17 @@ const MainContent = () => {
     <Box mt="25" ml="-2">
       <CardHeaderDash />
       <Box display="flex">
-        <Container1 />
-        {isLargerThan900 ? <Container2 /> : ''}
+        <BuildByDevsBox />
+        {isLargerThan900 ? <WorkRocketsBox /> : ''}
       </Box>
       <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
-        <Container3 />
-        <Container4 />
+        <CandleGraphBox />
+        <BarGraphBox />
       </Box>
       <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
-        <Container5 />
-        <Container6 />
-        {isLargerThan900 ? <Container7 /> : ''}
+        <CompaniesBox />
+        <NewsBox1 />
+        {isLargerThan900 ? <NewsBox2 /> : ''}
       </Box>
       <Footer />
     </Box>
