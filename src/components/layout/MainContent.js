@@ -8,7 +8,7 @@ import BarGraphBox from '../dashboard/BarGraphBox';
 import CompaniesBox from '../dashboard/CompaniesBox';
 import NewsBox1 from '../dashboard/NewsBox1';
 import NewsBox2 from '../dashboard/NewsBox2';
-import Footer from '../dashboard/Footer';
+import Footer from './Footer';
 import { useMediaQuery } from '@chakra-ui/react';
 
 const MainContent = () => {

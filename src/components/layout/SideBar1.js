@@ -28,9 +28,9 @@ import { modalActions } from '../../store/index';
 import { sideNavActions } from '../../store/index';
 import { useSelector } from 'react-redux';
 
-import MainContent from '../layout/MainContent';
-import Billing from './Billing';
-import Settings from './Settings';
+import MainContent from './MainContent';
+import Billing from '../dashboard/Billing';
+import Settings from '../dashboard/Settings';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },
