@@ -12,10 +12,8 @@ import Application from './components/pages/Application';
 import Ecommerce from './components/pages/Ecommerce';
 import Marketing from './components/pages/Marketing';
 import Community from './components/pages/Community';
-// import Themes from './pages/Themes';
 import Pricing from './components/pages/Pricing';
 import Documentation from './components/pages/Documentation';
-// import Dashboard from './pages/Dashboard';
 import AuthProtection from './components/auth/AuthProtection';
 import { json } from 'react-router-dom';
 

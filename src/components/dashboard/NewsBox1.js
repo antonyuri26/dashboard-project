@@ -1,7 +1,6 @@
 import { Heading } from '@chakra-ui/react';
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
@@ -20,8 +19,6 @@ const NewsBox1 = () => {
       overflow="hidden"
       variant="outline"
       width={isLargerThan900 ? '35%' : '100%'}
-      // width="35%"
-      // ml="4"
       ml={isLargerThan900 ? '4' : '0'}
       mb="4"
     >

@@ -16,7 +16,6 @@ const CardHeaderDash = () => {
   return (
     <SimpleGrid
       spacing={5}
-      // templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
       templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
       alignItems="center"
       justifyItems="stretch"

@@ -23,7 +23,6 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <Flex px="10"> */}
       <MainNavigation />
 
       <MainDashboardArea>
@@ -45,7 +44,6 @@ const Dashboard = () => {
           </ModalBox>
         )}
       </MainDashboardArea>
-      {/* </Flex> */}
     </>
   );
 };

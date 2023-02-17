@@ -47,7 +47,6 @@ const CompaniesBox = () => {
       overflow="hidden"
       variant="outline"
       width={isLargerThan900 ? '40%' : '100%'}
-      // width="40%"
       ml="0"
       mb="4"
     >

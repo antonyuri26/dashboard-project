@@ -67,7 +67,7 @@ export default function WithSubnavigation(props) {
 
   const signOutHandler = () => {
     dispatchAuth(authActions.logOut());
-    dispatchNav(navActions.navChange()); //need to reset the other states here
+    dispatchNav(navActions.navChange());
     window.localStorage.removeItem('token');
     navigate('/signin');
   };
@@ -140,8 +140,6 @@ export default function WithSubnavigation(props) {
               fontSize={'md'}
               fontWeight={400}
               variant={'link'}
-              // href={'/signin'}
-              // id={'sidnin'}
               onClick={() => signInHandler('signin')}
               cursor={'pointer'}
             >
@@ -307,7 +305,7 @@ const DesktopNav = () => {
                 >
                   <Stack>
                     {navItem.children.map(child => (
-                      <DesktopSubNav key={child.label} {...child} /> //dropdown
+                      <DesktopSubNav key={child.label} {...child} />
                     ))}
                   </Stack>
                 </PopoverContent>
@@ -460,12 +458,10 @@ const NAV_ITEMS = [
 
   {
     label: 'Features',
-    // href: 'features',
     id: 'features',
   },
   {
     label: 'Pricing',
-    // href: '/pricing',
     id: 'pricing',
   },
   {
@@ -473,9 +469,4 @@ const NAV_ITEMS = [
     href: '/themes',
     id: 'themes',
   },
-  // {
-  //   label: 'Documentation',
-  //   href: '/documentation',
-  //   id: 'documentation',
-  // },
 ];

@@ -17,7 +17,6 @@ export default function CallToActionWithIllustration() {
         align={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 10 }}
-        // py={{ base: 15, md: 18 }}
       >
         <Heading
           fontWeight={600}
@@ -59,7 +58,7 @@ export default function CallToActionWithIllustration() {
   );
 }
 
-export const Illustration = (props: IconProps) => {
+export const Illustration = props => {
   return (
     <Icon
       width="100%"
