@@ -2,10 +2,28 @@
 
 export const state = {
   options: {
-    chart: {
-      id: 'basic-bar',
-      width: '100%',
+    options: {
+      chart: {
+        type: 'candlestick',
+        height: 350,
+      },
+      title: {
+        text: 'CandleStick Chart',
+        align: 'left',
+      },
+      xaxis: {
+        type: 'datetime',
+      },
+      yaxis: {
+        tooltip: {
+          enabled: true,
+        },
+      },
     },
+    // chart: {
+    //   id: 'basic-bar',
+    //   width: '100%',
+    // },
     xaxis: {
       categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
     },
@@ -292,22 +310,4 @@ export const data = {
       ],
     },
   ],
-  options: {
-    chart: {
-      type: 'candlestick',
-      height: 350,
-    },
-    title: {
-      text: 'CandleStick Chart',
-      align: 'left',
-    },
-    xaxis: {
-      type: 'datetime',
-    },
-    yaxis: {
-      tooltip: {
-        enabled: true,
-      },
-    },
-  },
 };

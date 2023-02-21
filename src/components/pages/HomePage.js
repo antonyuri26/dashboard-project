@@ -26,7 +26,7 @@ const HomePage = () => {
       window.scrollTo({ top: 850, left: 0, behavior: 'smooth' });
       dispatch(navActions.navChange('reset'));
     }
-  }, [nav]);
+  }, [nav, navId, dispatch]);
 
   return (
     <div>

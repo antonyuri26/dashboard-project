@@ -1,10 +1,8 @@
 import { Heading } from '@chakra-ui/react';
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
-  Image,
   Stack,
   Text,
   Button,

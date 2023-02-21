@@ -2,11 +2,9 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   SimpleGrid,
   Heading,
   Text,
-  Button,
 } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
 

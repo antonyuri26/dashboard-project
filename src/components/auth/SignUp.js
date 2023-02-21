@@ -13,7 +13,6 @@ import {
   Text,
   useColorModeValue,
   Link,
-  AccordionButton,
 } from '@chakra-ui/react';
 import { Form, Link as ReactRouter, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
