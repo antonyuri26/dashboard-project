@@ -28,7 +28,7 @@ function PriceWrapper({ children }) {
   );
 }
 
-export default function ThreeTierPricing() {
+export default function Pricing() {
   return (
     <Box py={28} id="pricing">
       <VStack spacing={2} textAlign="center">

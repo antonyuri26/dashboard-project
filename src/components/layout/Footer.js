@@ -9,7 +9,9 @@ import {
   VisuallyHidden,
   Image,
 } from '@chakra-ui/react';
+
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+
 import logo from '../../images/logo-footer.png';
 
 const SocialButton = ({ children, label, href }) => {
@@ -76,7 +78,7 @@ export default function Footer() {
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}
         >
-          <Text>© 2023, Made by Antonio Souza</Text>
+          <Text>© 2023, Created by Antonio Souza</Text>
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Twitter'} href={'#'}>
               <FaTwitter />

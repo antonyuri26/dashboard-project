@@ -1,13 +1,13 @@
 import MainDashboardArea from '../layout/MainDashboardArea';
-
 import SimpleSidebar from '../layout/SideBar1';
 import MainNavigation from '../layout/MainNavigation';
-import { useSelector, useDispatch } from 'react-redux';
 import ModalBox from '../layout/Modal';
-import { modalActions } from '../../store/index';
 import TableModal from '../dashboard/Table';
 import ProfileModal from '../dashboard/ProfileModal';
 import NewsLetter from '../dashboard/NewsLetter';
+
+import { modalActions } from '../../store/index';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Dashboard = () => {
   const isTablesOpen = useSelector(state => state.modal.isOpen);

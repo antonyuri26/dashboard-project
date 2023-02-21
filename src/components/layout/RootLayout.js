@@ -1,4 +1,4 @@
-import WithSubnavigation from './MainNavigation';
+import MainNavigation from './MainNavigation';
 import { Outlet } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
 
@@ -11,7 +11,7 @@ const RootLayout = props => {
       justifyContent="center"
       margin="auto"
     >
-      <WithSubnavigation navPageChangeHandler={props.navPageChangeHandler} />
+      <MainNavigation navPageChangeHandler={props.navPageChangeHandler} />
       <main>
         <Outlet />
       </main>

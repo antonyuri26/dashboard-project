@@ -29,20 +29,19 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 
+import { useNavigate } from 'react-router-dom';
+import { Link as ReactRouter } from 'react-router-dom';
+import { authActions, navActions } from '../../store';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { ImStatsBars2 } from 'react-icons/im';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineShop } from 'react-icons/ai';
 import { BsPeople } from 'react-icons/bs';
 
-import { useNavigate } from 'react-router-dom';
-import { Link as ReactRouter } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import { authActions } from '../../store';
-import { navActions } from '../../store';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
-export default function WithSubnavigation(props) {
+export default function MainNavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
   const dispatchAuth = useDispatch();

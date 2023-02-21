@@ -1,6 +1,5 @@
 import React from 'react';
-import { Heading } from '@chakra-ui/react';
-import { Divider } from '@chakra-ui/react';
+import { Heading, Divider } from '@chakra-ui/react';
 
 const HeadingText = () => {
   return (

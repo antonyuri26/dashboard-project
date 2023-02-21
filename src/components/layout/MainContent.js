@@ -1,28 +1,31 @@
 import { Box } from '@chakra-ui/react';
 
 import CardHeaderDash from '../dashboard/CardHeaderDash';
-import BuildByDevsBox from '../dashboard/BuildByDevsBox';
-import WorkRocketsBox from '../dashboard/WorkRocketsBox';
-import CandleGraphBox from '../dashboard/CandleGraphBox';
-import BarGraphBox from '../dashboard/BarGraphBox';
+import BuildDevBox from '../dashboard/BuildDevBox';
+import WorkRockets from '../dashboard/WorkRockets';
+import CandleChart from '../dashboard/CandleChart';
+import BarChart from '../dashboard/BarChart';
 import CompaniesBox from '../dashboard/CompaniesBox';
 import NewsBox1 from '../dashboard/NewsBox1';
 import NewsBox2 from '../dashboard/NewsBox2';
 import Footer from './Footer';
+import Welcome from '../dashboard/Welcome';
+
 import { useMediaQuery } from '@chakra-ui/react';
 
 const MainContent = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
   return (
     <Box mt="25" ml="-2">
+      <Welcome />
       <CardHeaderDash />
       <Box display="flex">
-        <BuildByDevsBox />
-        {isLargerThan900 ? <WorkRocketsBox /> : ''}
+        <WorkRockets />
+        {isLargerThan900 ? <BuildDevBox /> : ''}
       </Box>
       <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
-        <CandleGraphBox />
-        <BarGraphBox />
+        <CandleChart />
+        <BarChart />
       </Box>
       <Box display="flex" flexDirection={isLargerThan900 ? 'row' : 'column'}>
         <CompaniesBox />

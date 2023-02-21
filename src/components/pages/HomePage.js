@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
-import SimpleThreeColumns from '../homePage/Features';
-import HeadingText from '../homePage/Heading';
-import WithSpeechBubbles from '../homePage/Testimonials';
-import ThreeTierPricing from '../homePage/Pricing';
-import BasicStatistics from '../homePage/Statistics';
-import LargeWithLogoLeft from '../layout/Footer';
-import CallToActionWithIllustration from '../homePage/Hero2';
-import { useSelector } from 'react-redux';
 
-import { navActions } from '../../store/index';
+import Features from '../homePage/Features';
+import HeadingText from '../homePage/Heading';
+import Testimonials from '../homePage/Testimonials';
+import Pricing from '../homePage/Pricing';
+import Statistics from '../homePage/Statistics';
+import Footer from '../layout/Footer';
+
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Box, Divider } from '@chakra-ui/react';
+import { navActions } from '../../store/index';
+
+import Hero from '../homePage/Hero';
 
 const HomePage = () => {
   const nav = useSelector(state => state.nav.navChange);
@@ -29,22 +31,21 @@ const HomePage = () => {
   }, [nav, navId, dispatch]);
 
   return (
-    <div>
-      {/* <Dashboard /> */}
-      <CallToActionWithIllustration />
+    <>
+      <Hero />
       <Box bg={'rgb(247,250,252)'}>
         <HeadingText />
         <Box pb="35">
-          <SimpleThreeColumns />
-          <SimpleThreeColumns />
+          <Features />
+          <Features />
         </Box>
       </Box>
       <Divider />
-      <ThreeTierPricing />
-      <WithSpeechBubbles />
-      <BasicStatistics />
-      <LargeWithLogoLeft />
-    </div>
+      <Pricing />
+      <Testimonials />
+      <Statistics />
+      <Footer />
+    </>
   );
 };
 

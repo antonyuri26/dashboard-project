@@ -45,7 +45,7 @@ function StatsCard(props) {
   );
 }
 
-export default function BasicStatistics() {
+export default function Statistics() {
   return (
     <Box
       maxW="7xl"

@@ -31,6 +31,7 @@ import { useSelector } from 'react-redux';
 import MainContent from './MainContent';
 import Billing from '../dashboard/Billing';
 import Settings from '../dashboard/Settings';
+import HelpCenter from '../dashboard/HelpCenter';
 
 const LinkItems = [
   { name: 'Dashboard', icon: FiHome, url: '', id: 'dashboard' },
@@ -138,6 +139,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             {link.name}
           </NavItem>
         ))}
+        <HelpCenter />
       </Box>
     </>
   );

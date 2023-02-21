@@ -1,4 +1,3 @@
-import { Heading } from '@chakra-ui/react';
 import {
   Card,
   CardBody,
@@ -7,8 +6,11 @@ import {
   Stack,
   Text,
   Button,
+  Heading,
 } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
+
+import aiImage from '../../images/ai-image.jpg';
 
 const NewsBox1 = () => {
   const [isLargerThan900] = useMediaQuery('(min-width: 900px)');
@@ -25,23 +27,31 @@ const NewsBox1 = () => {
       <Image
         objectFit="cover"
         maxW={{ base: '100%', sm: '200px' }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
+        src={aiImage}
+        alt="AI"
       />
 
       <Stack>
         <CardBody>
-          <Heading size="md">The perfect latte</Heading>
+          <Heading size="md" color={'gray'}>
+            Artificial Intelligence
+          </Heading>
 
-          <Text py="2">
-            Caffè latte is a coffee beverage of Italian origin made with
-            espresso and steamed milk.
+          <Text size="sm" mt={'0.4rem'} as="b">
+            UI Dashboard
+          </Text>
+
+          <Text py="2" color={'gray'}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste,
+            dolore quos! Reprehenderit, deleniti! Dolor molestiae dolore quia
+            mollitia? Explicabo optio voluptate omnis temporibus! Voluptatibus
+            at quidem beatae accusantium, alias earum.
           </Text>
         </CardBody>
 
         <CardFooter>
           <Button variant="solid" colorScheme="blue">
-            Buy Latte
+            Lear more
           </Button>
         </CardFooter>
       </Stack>

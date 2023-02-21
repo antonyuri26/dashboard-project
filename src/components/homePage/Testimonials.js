@@ -78,7 +78,7 @@ const TestimonialAvatar = ({ src, name, title }) => {
   );
 };
 
-export default function WithSpeechBubbles() {
+export default function Testimonials() {
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.700')} mb="5">
       <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>

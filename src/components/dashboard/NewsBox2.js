@@ -1,13 +1,8 @@
-import { Heading } from '@chakra-ui/react';
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Image,
-  Stack,
-  Text,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Card } from '@chakra-ui/react';
+
+import Chart from 'react-apexcharts';
+
+import { data_circle as data } from '../../data/dummy-data';
 
 const NewsBox2 = () => {
   return (
@@ -19,29 +14,9 @@ const NewsBox2 = () => {
       ml="4"
       mb="4"
     >
-      <Image
-        objectFit="cover"
-        maxW={{ base: '100%', sm: '200px' }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
-      />
-
-      <Stack>
-        <CardBody>
-          <Heading size="md">The perfect latte</Heading>
-
-          <Text py="2">
-            Caffè latte is a coffee beverage of Italian origin made with
-            espresso and steamed milk.
-          </Text>
-        </CardBody>
-
-        <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            Buy Latte
-          </Button>
-        </CardFooter>
-      </Stack>
+      <Box width={'100%'} height={'10%'}>
+        <Chart options={data.options} series={data.series} type="polarArea" />
+      </Box>
     </Card>
   );
 };
