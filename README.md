@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Overview
+
+The Dashboard Project is a web-based platform developed using React.js and Redux as the primary state management tool. The project aims to provide users with a comprehensive and centralized view of various data points, metrics, and other key performance indicators in a single location.
+Technologies used: HTML, CSS, React.JS, Redux, Chakra UI
+
+Live Demo: https://main--dashboard-project-7e81ba.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
